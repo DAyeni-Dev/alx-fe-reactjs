@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import UserContext from './UserContext'; 
+import UserContext from './components/UserContext';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
