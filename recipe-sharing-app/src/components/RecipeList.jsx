@@ -1,35 +1,24 @@
-import { create } from 'zustand';
+import React from 'react';
+import { useRecipeStore } from './recipeStore';
+import RecipeCard from './RecipeCard';
+import { Link } from 'react-router-dom';
 
-export const useRecipeStore = create((set) => ({
-  recipes: [],
-  searchTerm: '',
-  filteredRecipes: [],
-  
-  setRecipes: (recipes) => set({ recipes }),
-  
-  addRecipe: (recipe) =>
-    set((state) => ({
-      recipes: [...state.recipes, recipe],
-    })),
+const RecipeList = () => {
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
 
-  updateRecipe: (updatedRecipe) =>
-    set((state) => ({
-      recipes: state.recipes.map((r) =>
-        r.id === updatedRecipe.id ? updatedRecipe : r
-      ),
-    })),
+  return (
+    <div className="recipe-list">
+      {filteredRecipes.length > 0 ? (
+        filteredRecipes.map((recipe) => (
+          <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
+            <RecipeCard recipe={recipe} />
+          </Link>
+        ))
+      ) : (
+        <p>No recipes found.</p>
+      )}
+    </div>
+  );
+};
 
-  deleteRecipe: (id) =>
-    set((state) => ({
-      recipes: state.recipes.filter((r) => r.id !== id),
-    })),
-
-  setSearchTerm: (term) => set({ searchTerm: term }),
-
-  filterRecipes: () =>
-    set((state) => ({
-      filteredRecipes: state.recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-      ),
-    })),
-}));
+export default RecipeList;
