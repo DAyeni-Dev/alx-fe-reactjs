@@ -1,24 +1,73 @@
-import React from 'react';
-import { useRecipeStore } from './recipeStore';
-import RecipeCard from './RecipeCard';
-import { Link } from 'react-router-dom';
+import { create } from 'zustand';
 
-const RecipeList = () => {
-  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
+export const useRecipeStore = create((set, get) => ({
+  recipes: [],
+  filteredRecipes: [],
+  favorites: [],
+  recommendations: [],
 
-  return (
-    <div className="recipe-list">
-      {filteredRecipes.length > 0 ? (
-        filteredRecipes.map((recipe) => (
-          <Link to={`/recipes/${recipe.id}`} key={recipe.id}>
-            <RecipeCard recipe={recipe} />
-          </Link>
-        ))
-      ) : (
-        <p>No recipes found.</p>
-      )}
-    </div>
-  );
-};
+  
+  setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
 
-export default RecipeList;
+  
+  addRecipe: (recipe) =>
+    set((state) => ({
+      recipes: [...state.recipes, recipe],
+      filteredRecipes: [...state.recipes, recipe],
+    })),
+
+  
+  updateRecipe: (updatedRecipe) =>
+    set((state) => {
+      const updatedList = state.recipes.map((r) =>
+        r.id === updatedRecipe.id ? updatedRecipe : r
+      );
+      return {
+        recipes: updatedList,
+        filteredRecipes: updatedList,
+      };
+    }),
+
+
+  deleteRecipe: (id) =>
+    set((state) => {
+      const updated = state.recipes.filter((r) => r.id !== id);
+      return {
+        recipes: updated,
+        filteredRecipes: updated,
+        favorites: state.favorites.filter((favId) => favId !== id),
+      };
+    }),
+
+  
+  filterRecipes: (searchTerm) =>
+    set((state) => ({
+      filteredRecipes: state.recipes.filter((r) =>
+        r.title.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    })),
+
+  
+  addFavorite: (id) =>
+    set((state) => ({
+      favorites: state.favorites.includes(id)
+        ? state.favorites
+        : [...state.favorites, id],
+    })),
+
+  removeFavorite: (id) =>
+    set((state) => ({
+      favorites: state.favorites.filter((favId) => favId !== id),
+    })),
+
+  
+  generateRecommendations: () => {
+    const state = get();
+    const nonFavoriteRecipes = state.recipes.filter(
+      (r) => !state.favorites.includes(r.id)
+    );
+    const shuffled = nonFavoriteRecipes.sort(() => 0.5 - Math.random());
+    const top3 = shuffled.slice(0, 3); 
+    set({ recommendations: top3 });
+  },
+}));
