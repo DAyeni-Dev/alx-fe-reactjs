@@ -6,17 +6,14 @@ export const useRecipeStore = create((set, get) => ({
   favorites: [],
   recommendations: [],
 
-  
   setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
 
-  
   addRecipe: (recipe) =>
     set((state) => ({
       recipes: [...state.recipes, recipe],
       filteredRecipes: [...state.recipes, recipe],
     })),
 
-  
   updateRecipe: (updatedRecipe) =>
     set((state) => {
       const updatedList = state.recipes.map((r) =>
@@ -28,7 +25,6 @@ export const useRecipeStore = create((set, get) => ({
       };
     }),
 
-
   deleteRecipe: (id) =>
     set((state) => {
       const updated = state.recipes.filter((r) => r.id !== id);
@@ -39,7 +35,6 @@ export const useRecipeStore = create((set, get) => ({
       };
     }),
 
-  
   filterRecipes: (searchTerm) =>
     set((state) => ({
       filteredRecipes: state.recipes.filter((r) =>
@@ -47,7 +42,6 @@ export const useRecipeStore = create((set, get) => ({
       ),
     })),
 
-  
   addFavorite: (id) =>
     set((state) => ({
       favorites: state.favorites.includes(id)
@@ -60,14 +54,13 @@ export const useRecipeStore = create((set, get) => ({
       favorites: state.favorites.filter((favId) => favId !== id),
     })),
 
-  
   generateRecommendations: () => {
     const state = get();
     const nonFavoriteRecipes = state.recipes.filter(
       (r) => !state.favorites.includes(r.id)
     );
     const shuffled = nonFavoriteRecipes.sort(() => 0.5 - Math.random());
-    const top3 = shuffled.slice(0, 3); 
+    const top3 = shuffled.slice(0, 3);
     set({ recommendations: top3 });
   },
 }));

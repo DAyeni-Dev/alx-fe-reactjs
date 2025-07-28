@@ -4,6 +4,9 @@ import RecipeForm from './components/RecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import FavoritesList from './components/FavoritesList';
 import RecommendationsList from './components/RecommendationsList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList';
+
 
 function App() {
   return (
@@ -17,6 +20,15 @@ function App() {
       </Routes>
     </Router>
   );
+  function App() {
+  return (
+    <div>
+      <h1>Recipe App</h1>
+      <AddRecipeForm />
+    </div>
+  );
+}
+
 }
 
 export default App;
