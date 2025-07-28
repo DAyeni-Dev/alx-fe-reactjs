@@ -5,38 +5,47 @@ export const useRecipeStore = create((set, get) => ({
   filteredRecipes: [],
   favorites: [],
   recommendations: [],
+  searchTerm: '',
 
-  setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
+  setRecipes: (recipes) =>
+    set({ recipes, filteredRecipes: recipes }),
 
   addRecipe: (recipe) =>
     set((state) => ({
       recipes: [...state.recipes, recipe],
-      filteredRecipes: [...state.recipes, recipe],
+      filteredRecipes: [...state.filteredRecipes, recipe],
     })),
 
-  updateRecipe: (updatedRecipe) => {
-    const updatedList = get().recipes.map((r) =>
-      r.id === updatedRecipe.id ? updatedRecipe : r
-    );
-    set({
-      recipes: updatedList,
-      filteredRecipes: updatedList,
-    });
+  updateRecipe: (updatedRecipe) =>
+    set((state) => {
+      const updatedList = state.recipes.map((r) =>
+        r.id === updatedRecipe.id ? updatedRecipe : r
+      );
+      return {
+        recipes: updatedList,
+        filteredRecipes: updatedList,
+      };
+    }),
+
+  deleteRecipe: (id) =>
+    set((state) => {
+      const updated = state.recipes.filter((r) => r.id !== id);
+      return {
+        recipes: updated,
+        filteredRecipes: updated,
+        favorites: state.favorites.filter((favId) => favId !== id),
+      };
+    }),
+
+  setSearchTerm: (term) => {
+    set({ searchTerm: term });
+    get().filterRecipes(term);
   },
 
-  deleteRecipe: (id) => {
-    const updated = get().recipes.filter((r) => r.id !== id);
-    set({
-      recipes: updated,
-      filteredRecipes: updated,
-      favorites: get().favorites.filter((favId) => favId !== id),
-    });
-  },
-
-  filterRecipes: (searchTerm) =>
+  filterRecipes: (term) =>
     set((state) => ({
       filteredRecipes: state.recipes.filter((r) =>
-        r.title.toLowerCase().includes(searchTerm.toLowerCase())
+        r.title.toLowerCase().includes(term.toLowerCase())
       ),
     })),
 
@@ -58,6 +67,7 @@ export const useRecipeStore = create((set, get) => ({
       (r) => !state.favorites.includes(r.id)
     );
     const shuffled = nonFavoriteRecipes.sort(() => 0.5 - Math.random());
-    set({ recommendations: shuffled.slice(0, 3) });
+    const top3 = shuffled.slice(0, 3);
+    set({ recommendations: top3 });
   },
 }));

@@ -8,17 +8,17 @@ const RecipeList = () => {
   return (
     <div>
       <h2>All Recipes</h2>
-      <ul>
-        {filteredRecipes.length > 0 ? (
-          filteredRecipes.map((recipe) => (
+      {filteredRecipes.length > 0 ? (
+        <ul>
+          {filteredRecipes.map((recipe) => (
             <li key={recipe.id}>
               <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
             </li>
-          ))
-        ) : (
-          <p>No recipes found.</p>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <p>No recipes found.</p>
+      )}
     </div>
   );
 };
