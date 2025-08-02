@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchUserData, fetchUsersByQuery } from '../services/githubService';
+import { fetchUserData, fetchUsersWithFilters } from '../services/githubService';
 
 function Search() {
   const [username, setUsername] = useState('');
@@ -18,8 +18,7 @@ function Search() {
     setUserDetail(null);
 
     try {
-      const query = `${username ? `${username} in:login` : ''} ${location ? `location:${location}` : ''} ${minRepos ? `repos:>${minRepos}` : ''}`.trim();
-      const results = await fetchUsersByQuery(query);
+      const results = await fetchUsersWithFilters(username, location, minRepos);
       if (!results.length) {
         setError('Looks like we cant find the user');
       } else {
