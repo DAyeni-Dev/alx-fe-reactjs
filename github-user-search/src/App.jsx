@@ -1,4 +1,6 @@
 import React from 'react';
+import Search from './components/Search';
+
 
 function App() {
   return (
@@ -7,6 +9,13 @@ function App() {
       <p>Start typing a GitHub username to search...</p>
     </div>
   );
+  return (
+    <div>
+      <h1 style={{ textAlign: 'center', paddingTop: '2rem' }}>GitHub User Search</h1>
+      <Search />
+    </div>
+  );
 }
 
 export default App;
+
