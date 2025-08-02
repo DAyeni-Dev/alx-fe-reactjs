@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.github.com';
-
 export const fetchUsersByQuery = async (query) => {
-  const url = `${BASE_URL}/search/users?q=${encodeURIComponent(query)}`;
+  const url = `https://api.github.com/search/users?q=${query}`;
   const headers = {};
-
   const token = import.meta.env.VITE_APP_GITHUB_API_KEY;
+
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -21,10 +19,10 @@ export const fetchUsersByQuery = async (query) => {
 };
 
 export const fetchUserData = async (username) => {
-  const url = `${BASE_URL}/users/${encodeURIComponent(username)}`;
+  const url = `https://api.github.com/users/${username}`;
   const headers = {};
-
   const token = import.meta.env.VITE_APP_GITHUB_API_KEY;
+
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -44,10 +42,10 @@ export const fetchUsersWithFilters = async (searchTerm, location, minRepos) => {
   if (location) query += `+location:${location}`;
   if (minRepos) query += `+repos:>=${minRepos}`;
 
-  const url = `${BASE_URL}/search/users?q=${encodeURIComponent(query)}`;
+  const url = `https://api.github.com/search/users?q=${query}`;
   const headers = {};
-
   const token = import.meta.env.VITE_APP_GITHUB_API_KEY;
+
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -56,7 +54,7 @@ export const fetchUsersWithFilters = async (searchTerm, location, minRepos) => {
     const response = await axios.get(url, { headers });
     return response.data.items;
   } catch (error) {
-    console.error('Error fetching filtered users:', error);
+    console.error('Error fetching users with filters:', error);
     throw error;
   }
 };
