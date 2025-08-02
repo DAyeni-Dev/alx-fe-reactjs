@@ -5,12 +5,12 @@ function Search() {
   const [username, setUsername] = useState('');
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
+    setError(false);
     setUser(null);
 
     try {
@@ -40,10 +40,15 @@ function Search() {
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p>Looks like we can't find the user.</p>}
+      {error && <p>Looks like we cant find the user</p>}
       {user && (
         <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <img src={user.avatar_url} alt={user.login} width="100" style={{ borderRadius: '50%' }} />
+          <img
+            src={user.avatar_url}
+            alt={user.login}
+            width="100"
+            style={{ borderRadius: '50%' }}
+          />
           <h2>{user.name || user.login}</h2>
           <a href={user.html_url} target="_blank" rel="noopener noreferrer">
             View GitHub Profile
