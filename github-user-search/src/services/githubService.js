@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const fetchUserData = async (username) => {
-  const url = `https://api.github.com/users/${username}`;
+export const fetchUsersByQuery = async (query) => {
+  const url = `https://api.github.com/search/users?q=${encodeURIComponent(query)}`;
   const headers = {};
 
   const token = import.meta.env.VITE_APP_GITHUB_API_KEY;
@@ -10,5 +10,5 @@ export const fetchUserData = async (username) => {
   }
 
   const response = await axios.get(url, { headers });
-  return response.data;
+  return response.data.items;
 };
