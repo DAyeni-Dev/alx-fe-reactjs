@@ -1,15 +1,17 @@
 function UserProfile() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-4 sm:p-4 md:p-8 mx-auto rounded-lg shadow-lg max-w-xs md:max-w-sm text-center">
+    <div className="user-profile">
+      <div className="bg-gray-100 p-4 sm:p-4 md:p-8 max-w-xs sm:max-w-xs md:max-w-sm mx-auto my-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
         <img
-          src="https://via.placeholder.com/150"
+          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80"
           alt="User"
-          className="rounded-full sm:w-24 sm:h-24 w-24 h-24 md:w-36 md:h-36 mx-auto mb-4 transition-transform hover:scale-105 duration-300"
+          className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"c
         />
-        <h1 className="text-lg md:text-xl font-bold text-blue-800">Oluwadamilola Ayeni</h1>
-        <p className="text-sm md:text-base text-gray-600 mt-2">
-          CEO at Baaston Tech Solutions. Bringing tech solutions to your finger tips.
+        <h1 className="text-lg md:text-xl text-blue-800 my-4 hover:text-blue-500 transition-colors duration-300 ease-in-out">
+          Oluwadamilola Ayeni
+        </h1>
+        <p className="text-sm md:text-base text-gray-600">
+          CEO at Bastion Tech Solutions. Bring Tech to Your fingertips.
         </p>
       </div>
     </div>
