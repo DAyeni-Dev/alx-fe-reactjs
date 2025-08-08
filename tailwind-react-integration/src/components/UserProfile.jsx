@@ -5,7 +5,7 @@ function UserProfile() {
         <img
           src="https://via.placeholder.com/150"
           alt="User"
-          className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto mb-4 transition-transform hover:scale-105 duration-300"
+          className="rounded-full sm:w-24 sm:h-24 w-24 h-24 md:w-36 md:h-36 mx-auto mb-4 transition-transform hover:scale-105 duration-300"
         />
         <h1 className="text-lg md:text-xl font-bold text-blue-800">Oluwadamilola Ayeni</h1>
         <p className="text-sm md:text-base text-gray-600 mt-2">
