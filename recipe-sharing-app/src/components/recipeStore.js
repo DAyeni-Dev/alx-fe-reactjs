@@ -71,3 +71,4 @@ export const useRecipeStore = create((set, get) => ({
     set({ recommendations: top3 });
   },
 }));
+export default useRecipeStore;
