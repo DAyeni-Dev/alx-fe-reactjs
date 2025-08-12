@@ -2,7 +2,7 @@
   [
   {
     "id": 1,
-    "name": "Spaghetti Carbonara",
+    "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
     "image": "https://www.allrecipes.com/thmb/a_0W8yk_LLCtH-VPqg2uLD9I5Pk=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg"
   },
@@ -24,19 +24,19 @@
     ],
   {
     "id": 2,
-    "name": "Chicken Tikka Masala",
+    "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
     "image": "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/06/chicken-tikka-masala.jpg"
   },
   {
     "id": 3,
-    "name": "Jollof Rice",
+    "title": "Jollof Rice",
     "summary": "A delicious West African rice dish cooked in a rich tomato sauce.",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTcVffK0cXyqj6ca-Td8moqUz6BetKkIGniQ&s"
   },
   {
     "id": 4,
-    "name": "Pancakes",
+    "title": "Pancakes",
     "summary": "Fluffy and golden breakfast pancakes served with syrup.",
     "image": "https://www.bhg.com/thmb/B1Mbx1q9AgIEJ8PbQpPq0QPs820=/4000x0/filters:no_upscale():strip_icc()/bhg-recipe-pancakes-waffles-pancakes-Hero-01-372c4cad318d4373b6288e993a60ca62.jpg"
   }
