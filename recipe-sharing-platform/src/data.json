@@ -1,12 +1,10 @@
-
-  [
+[
   {
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://www.allrecipes.com/thmb/a_0W8yk_LLCtH-VPqg2uLD9I5Pk=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg"
-  },
-    "ingredients", [
+    "image": "https://www.allrecipes.com/thmb/a_0W8yk_LLCtH-VPqg2uLD9I5Pk=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg",
+    "ingredients": [
       "400g spaghetti",
       "150g pancetta or bacon, diced",
       "2 large eggs",
@@ -14,14 +12,15 @@
       "2 cloves garlic, crushed",
       "Salt and black pepper"
     ],
-    "instructions", [
+    "instructions": [
       "Cook the spaghetti in salted boiling water until al dente.",
       "Fry the pancetta until crisp; add crushed garlic briefly, then remove from heat.",
       "Whisk eggs and Parmesan together in a bowl.",
       "Drain pasta, reserve some cooking water, then return pasta to the pot.",
       "Quickly mix in the egg-cheese mixture and pancetta, adding a splash of pasta water to make a creamy sauce.",
       "Season with salt and lots of freshly cracked black pepper. Serve immediately."
-    ],
+    ]
+  },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",

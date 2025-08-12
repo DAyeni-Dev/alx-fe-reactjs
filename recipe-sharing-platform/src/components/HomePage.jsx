@@ -10,12 +10,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="min-h-screen bg-gray-50 px-4 py-10 w-full">
       <h1 className="text-4xl font-bold text-center text-yellow-600 mb-10">
         Recipe Sharing Platform
       </h1>
 
-      <div className="grid gap-8 grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {recipes.map((recipe) => (
           <Link
             to={`/recipe/${recipe.id}`}
