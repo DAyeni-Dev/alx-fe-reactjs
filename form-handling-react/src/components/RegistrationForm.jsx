@@ -8,10 +8,11 @@ const RegistrationForm =() => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-        if (!username|| !email|| !password) {
-            alert("All fields are required!")
-            return;
-        }
+       if (!username || !email || !password) {
+  alert("All fields are required!");
+  return;
+}
+
     console.log({ username, email, password });    
 
 
@@ -41,7 +42,7 @@ return (
         <input 
         type="password"
         placeholder="Password"
-        value= {password}
+        value={password}
         onChange={(e)=> 
             setPassword(e.target.value)}
             />

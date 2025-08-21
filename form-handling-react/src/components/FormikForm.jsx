@@ -10,10 +10,11 @@ const FormikForm = () => {
   };
 
   const validationSchema = Yup.object({
-    username: Yup.string().required("Username is required"),
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string().required("Password is required"),
-  });
+  username: Yup.string().required("Username is required"),
+  email: Yup.string().email("Invalid email format").required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});
+
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
@@ -29,17 +30,17 @@ const FormikForm = () => {
       <Form>
         <div>
           <Field type="text" name="username" placeholder="Username" />
-          <ErrorMessage name="username" component="div" style={{ color: "red" }} />
+          <ErrorMessage name="username" component="div" />
         </div>
 
         <div>
           <Field type="email" name="email" placeholder="Email" />
-          <ErrorMessage name="email" component="div" style={{ color: "red" }} />
+          <ErrorMessage name="email" component="div"  />
         </div>
 
         <div>
           <Field type="password" name="password" placeholder="Password" />
-          <ErrorMessage name="password" component="div" style={{ color: "red" }} />
+          <ErrorMessage name="password" component="div" />
         </div>
 
         <button type="submit">Register</button>
