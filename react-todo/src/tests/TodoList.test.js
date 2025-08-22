@@ -13,22 +13,17 @@ describe("TodoList Component", () => {
     render(<TodoList />);
     const input = screen.getByPlaceholderText("Add new todo");
     const addButton = screen.getByText("Add");
-
     fireEvent.change(input, { target: { value: "Write tests" } });
     fireEvent.click(addButton);
-
     expect(screen.getByText("Write tests")).toBeInTheDocument();
   });
 
   test("toggles todo completion", () => {
     render(<TodoList />);
     const todo = screen.getByText("Learn React");
-
     expect(todo).not.toHaveClass("completed");
-
     fireEvent.click(todo);
     expect(todo).toHaveClass("completed");
-
     fireEvent.click(todo);
     expect(todo).not.toHaveClass("completed");
   });
@@ -37,7 +32,6 @@ describe("TodoList Component", () => {
     render(<TodoList />);
     const todo = screen.getByText("Build Todo App");
     const deleteButton = screen.getByTestId("delete-Build Todo App");
-
     fireEvent.click(deleteButton);
     expect(todo).not.toBeInTheDocument();
   });

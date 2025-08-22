@@ -33,7 +33,7 @@ const TodoList = () => {
           <li
             key={todo.id}
             onClick={() => toggleTodo(todo.id)}
-            className={todo.completed ? "completed" : ""}
+            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
           >
             {todo.text}
             <button
